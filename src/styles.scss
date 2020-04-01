@@ -9,13 +9,17 @@
 @include angular-material-theme($yra-theme);
 
 // Global styles.
+html, body {
+  min-height: 100%;
+  background-color: white;
+}
+
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  height: 100%;
 }
 
 body {
@@ -24,6 +28,16 @@ body {
   font-family: mat-font-family($yra-typography);
   line-height: mat-line-height($yra-typography, body-1);
   font-size: mat-font-size($yra-typography, body-1);
-  height: 100%;
   margin: 0;
+}
+
+// The Nav Component hosts the Sidenav container and the Sidenav content area (i.e., the router-outlet).
+
+#app-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
 }

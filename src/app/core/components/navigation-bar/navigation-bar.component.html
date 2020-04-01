@@ -1,0 +1,59 @@
+<mat-toolbar class="toolbar">
+
+    <mat-toolbar-row>
+  
+      <button mat-icon-button (click)="toggleSidenav.emit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
+      <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="flex-start">
+        <a routerLink="/" fxLayout>
+          <img class="toolbar__logo" src="/assets/logo.png" alt="Your Rents Logo" />
+        </a>
+        <a class="toolbar__title" routerLink="/">Your Rents</a>
+      </div>
+  
+      <div fxFlex fxLayout fxLayoutAlign="flex-end">
+  
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+  
+          <li fxHide.xs>
+            <button mat-icon-button>
+              <mat-icon>settings</mat-icon>
+            </button>
+          </li>
+  
+          <li fxHide.xs>
+            <button mat-icon-button>
+              <mat-icon>help_outline</mat-icon>
+            </button>
+          </li>
+  
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="auth">
+              <mat-icon>person_outline</mat-icon>
+            </button>
+            <mat-menu #auth="matMenu">
+  
+              <button mat-menu-item (click)="onProfile()">
+                <mat-icon>person_outline</mat-icon>
+                <span>Profile</span>
+              </button>
+  
+              <mat-divider></mat-divider>
+  
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Sign out</span>
+              </button>
+  
+            </mat-menu>
+          </li>
+  
+        </ul>
+  
+      </div>
+  
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
