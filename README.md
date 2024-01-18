@@ -1,5 +1,7 @@
 # YourRentsNg
 
+[![Angular CI](https://github.com/your-rents/your-rents-ng/actions/workflows/angular.yml/badge.svg)](https://github.com/your-rents/your-rents-ng/actions/workflows/angular.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
 
 ## Development server
