@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update
-          apt-get install -y libnss3-dev libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon-x11-0
+          apt-get install -y libnss3-dev libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon-x11-0 libxcomposite-dev
 
       - name: Cache node modules
         uses: actions/cache@v2
