@@ -24,7 +24,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
@@ -32,7 +32,7 @@ jobs:
           apt-get install -y libnss3-dev libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon-x11-0 libxcomposite-dev libxdamage1 libxrandr2 libgbm-dev libasound2
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
