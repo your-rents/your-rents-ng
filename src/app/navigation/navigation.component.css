@@ -1,3 +1,5 @@
+@tailwind components;
+
 .sidenav-container {
   height: 100%;
 }
@@ -16,6 +18,8 @@
   z-index: 1;
 }
 
-#app-content{
-  padding: 1em;
+@layer components {
+  .mat-mdc-list-item.active span {
+    @apply font-bold
+  }
 }
