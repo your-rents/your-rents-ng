@@ -4,11 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-page404',
   standalone: true,
   imports: [
+    RouterLink,
     MatCardModule,
     MatDividerModule,
     MatProgressBarModule,
