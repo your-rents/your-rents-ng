@@ -3,6 +3,7 @@ import { Page404Component } from './page404/page404.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './shared/security';
+import { Page403Component } from './page403/page403.component';
 
 export const routes: Routes = [
   { path: 'home', title: 'YourRents - Home', component: HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     data: { roles: ['USER'] },
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '403', title: 'YourRents - Access Denied', component: Page403Component},
   {
     path: '**',
     title: 'YourRents - Page Not Found',
