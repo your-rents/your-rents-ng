@@ -12,17 +12,19 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="flex flex-row">
       @if (isHandset$ | async) {
         <button
           type="button"
+          class="grow-0"
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span id="app-title">YourRents</span>
+      <span id="app-title" class="grow">YourRents</span>
+      <app-authentication class="grow-0"></app-authentication>
     </mat-toolbar>
     <div class="p-4">
       <router-outlet></router-outlet>

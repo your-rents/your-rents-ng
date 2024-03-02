@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (user; as userValue) {
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>Id</span>
+        <span matListItemLine>{{ userValue.id }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Username</span>
+        <span matListItemLine>{{ userValue.username }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Name</span>
+        <span matListItemLine>{{ userValue.firstName }} {{ userValue.lastName }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>E-mail</span>
+        <span matListItemLine>{{ userValue.email }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Roles</span>
+        <span matListItemLine>{{ keycloakService.getUserRoles(false, 'your-rents-ng') }}</span>
+      </mat-list-item>
+    </mat-list>
+    }
+  </mat-card-content>
+</mat-card>

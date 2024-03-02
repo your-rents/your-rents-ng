@@ -10,22 +10,24 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
+import { AuthenticationComponent } from "../authentication/authentication.component";
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.css',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatDividerModule,
-    AsyncPipe,
-  ]
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.css',
+    standalone: true,
+    imports: [
+        RouterModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatDividerModule,
+        AsyncPipe,
+        AuthenticationComponent
+    ]
 })
 export class NavigationComponent {
   title = 'YourRents';

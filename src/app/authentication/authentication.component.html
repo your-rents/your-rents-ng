@@ -1,0 +1,22 @@
+<div>
+  @if (!isLoggedIn) {
+  <button
+    data-testid="btn-sign-in"
+    mat-raised-button
+    (click)="login()"
+  >
+    Sign In
+  </button>
+  } @else { @if (user; as userValue) {
+  <div class="flex items-center space-x-4">
+    <div data-testid="p-username"><a [routerLink]="['/profile']" mat-button>{{ userValue.firstName }} {{ userValue.lastName }}</a></div>
+    <button
+      (click)="logout()"
+      data-testid="btn-sign-out"
+      mat-raised-button
+    >
+      Sign Out
+    </button>
+  </div>
+  } }
+</div>
