@@ -2,7 +2,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpInterceptorFn } from '@angular/common/http';
 
 import { AppTestingModule } from '../shared/testing/app-testing.module';
-import { ProfileComponent } from './profile.component';
+import ProfileComponent from './profile.component';
 
 export const passThroughInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req);

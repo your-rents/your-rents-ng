@@ -12,7 +12,7 @@ import { KeycloakProfile } from 'keycloak-js';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent implements OnInit {
+export default class ProfileComponent implements OnInit {
   keycloakService: KeycloakService = inject(KeycloakService);
   user: KeycloakProfile | null = null;
 

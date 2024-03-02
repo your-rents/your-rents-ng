@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { Page404Component } from './page404/page404.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './shared/security';
 
 export const routes: Routes = [
@@ -11,7 +10,7 @@ export const routes: Routes = [
   {
     path: 'profile',
     title: 'YourRents - User Profile',
-    component: ProfileComponent,
+    loadComponent: () => import('./profile/profile.component'),
     canActivate: [AuthGuard],
     data: { roles: ['USER'] },
   },
