@@ -1,0 +1,7 @@
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" [class.mat-elevation-z4]="true">
+  <a mat-tab-link [routerLink]="['geodata']" routerLinkActive="active" #rla="routerLinkActive" [active]="rla.isActive">GeoData</a>
+  <a mat-tab-link disabled>Disabled Link</a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+    <router-outlet></router-outlet>
+</mat-tab-nav-panel>

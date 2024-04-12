@@ -3,21 +3,26 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { KeycloakService } from 'keycloak-angular';
-import { provideHttpClient } from '@angular/common/http';
+import { KeycloakAngularModule, KeycloakBearerInterceptor, KeycloakService } from 'keycloak-angular';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    provideHttpClient(withInterceptorsFromDi()),
+    KeycloakService,
     {
       provide: APP_INITIALIZER,
       useFactory: initKeycloak,
       multi: true,
       deps: [KeycloakService],
     },
-    KeycloakService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KeycloakBearerInterceptor,
+      multi: true,
+    },
     provideAnimations(),
-    provideHttpClient(),
   ],
 };
 
@@ -32,5 +37,8 @@ function initKeycloak(keycloak: KeycloakService) {
       onLoad: 'check-sso',
       silentCheckSsoRedirectUri: window.location.origin +  '/assets/silent-check-sso.html'
     },
+    enableBearerInterceptor: true,
+    bearerPrefix: 'Bearer',
+    bearerExcludedUrls: [],
   });
 }

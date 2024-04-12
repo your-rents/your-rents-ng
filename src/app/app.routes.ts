@@ -15,8 +15,19 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['USER'] },
   },
+  {
+    path: 'admin',
+    title: 'YourRents - Admin',
+    loadChildren: () => import('./admin/admin.routes').then((m) => m.routes),
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] },
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '403', title: 'YourRents - Access Denied', component: Page403Component},
+  {
+    path: '403',
+    title: 'YourRents - Access Denied',
+    component: Page403Component,
+  },
   {
     path: '**',
     title: 'YourRents - Page Not Found',

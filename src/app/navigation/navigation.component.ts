@@ -10,33 +10,48 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
-import { AuthenticationComponent } from "../authentication/authentication.component";
+import { AuthenticationComponent } from '../authentication/authentication.component';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
-    selector: 'app-navigation',
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.css',
-    standalone: true,
-    imports: [
-        RouterModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        MatDividerModule,
-        AsyncPipe,
-        AuthenticationComponent
-    ]
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrl: './navigation.component.css',
+  standalone: true,
+  imports: [
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    AsyncPipe,
+    AuthenticationComponent,
+  ],
 })
 export class NavigationComponent {
   title = 'YourRents';
+  isLoggedIn = false;
+  isAdmin = false;
+
+  private readonly keycloakService: KeycloakService = inject(KeycloakService);
 
   private breakpointObserver = inject(BreakpointObserver);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
       shareReplay()
     );
+
+  async ngOnInit() {
+    this.isLoggedIn = await this.keycloakService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      this.isAdmin = this.keycloakService.isUserInRole('ADMIN');
+    }
+
+  }
 }
