@@ -6,6 +6,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakBearerInterceptor, KeycloakService } from 'keycloak-angular';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 
+import { environment } from '../environments/environment';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -29,7 +31,7 @@ export const appConfig: ApplicationConfig = {
 function initKeycloak(keycloak: KeycloakService) {
   return () => keycloak.init({
     config: {
-      url: 'http://localhost:18080',
+      url: environment.authenticationUrl,
       realm: 'your-rents',
       clientId: 'your-rents-ng'
     },
