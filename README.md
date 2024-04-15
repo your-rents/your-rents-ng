@@ -7,8 +7,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Execute the application in develpment
 
 1. Start the backend API, follow the instructions in the [YourRentsAPI](https://github.com/your-rents/your-rents-api) repository.
-
-
 2. Start the frontend application:
 
     ```bash
