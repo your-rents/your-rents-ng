@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,6 +7,9 @@ import { KeycloakAngularModule, KeycloakBearerInterceptor, KeycloakService } fro
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { getBrowserLang, provideTransloco } from '@jsverse/transloco';
+import { UserService } from './shared/service/common/user.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +27,17 @@ export const appConfig: ApplicationConfig = {
       useClass: KeycloakBearerInterceptor,
       multi: true,
     },
-    provideAnimations(),
+    provideAnimations(), provideHttpClient(), provideTransloco({
+        config: { 
+          availableLangs: [{id: 'en', label: 'English'}, {id: 'it', label: 'Italiano'}],
+          defaultLang: JSON.parse(localStorage.getItem(UserService.USER_PREFS_KEY) || JSON.stringify({ lastLanguage: getBrowserLang() || 'en'})).lastLanguage,
+          fallbackLang: 'en',
+          // Remove this option if your application doesn't support changing language in runtime.
+          reRenderOnLangChange: true,
+          prodMode: !isDevMode(),
+        },
+        loader: TranslocoHttpLoader
+      }),
   ],
 };
 
@@ -37,7 +50,8 @@ function initKeycloak(keycloak: KeycloakService) {
     },
     initOptions: {
       onLoad: 'check-sso',
-      silentCheckSsoRedirectUri: window.location.origin +  '/assets/silent-check-sso.html'
+      silentCheckSsoRedirectUri: window.location.origin +  '/assets/silent-check-sso.html',
+      locale: getBrowserLang() || 'en',
     },
     enableBearerInterceptor: true,
     bearerPrefix: 'Bearer',

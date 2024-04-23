@@ -1,0 +1,23 @@
+{
+  "about": "About",
+  "administration": "Amministrazione",
+  "back": "Indietro",
+  "forbidden": "Vietato",
+  "home": "Inizio",
+  "it_istat_code": "Codice Istat (IT)",
+  "it_tax_office_code": "Codice Erariale (IT)",
+  "name": "Nome",
+  "not_exist": "Non esiste",
+  "page_not_found": "Pagina non trovata",
+  "paginator": {
+    "first_page": "Prima pagina",
+    "items_per_page": "Elementi per pagina:",
+    "last_page": "Ultima pagina",
+    "next_page": "Pagina successiva",
+    "page": "Pagina {{page}} di {{amountPages}}",
+    "previous_page": "Pagina precedente"
+  },
+  "province": "Provincia",
+  "sign-in": "Entra",
+  "sign-out": "Esci"
+}

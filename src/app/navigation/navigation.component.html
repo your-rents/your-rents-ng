@@ -1,65 +1,68 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a
-        mat-list-item
-        routerLink="/home"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        ><span>Home</span></a
-      >
-      <mat-divider></mat-divider>
-      @if (isAdmin) {
-      <a
-        mat-list-item
-        routerLink="/admin"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        ><span>Administration</span></a
-      >
-      }
-      <a
-        mat-list-item
-        routerLink="/about"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        ><span>About</span></a
-      >
-      <a
-        mat-list-item
-        routerLink="/notexist"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Not exist (test)</a
-      >
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="flex flex-row">
-      @if (isHandset$ | async) {
-      <button
-        type="button"
-        class="grow-0"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      }
-      <span id="app-title" class="grow">YourRents</span>
-      <app-authentication class="grow-0"></app-authentication>
-    </mat-toolbar>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<ng-container *transloco="let t">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #drawer
+      class="sidenav"
+      fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+    >
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a
+          mat-list-item
+          routerLink="/home"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          ><span>{{ t('home') }}</span></a
+        >
+        <mat-divider></mat-divider>
+        @if (isAdmin) {
+        <a
+          mat-list-item
+          routerLink="/admin"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          ><span>{{ t('administration' )}}</span></a
+        >
+        }
+        <a
+          mat-list-item
+          routerLink="/about"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          ><span>{{ t('about') }}</span></a
+        >
+        <a
+          mat-list-item
+          routerLink="/notexist"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >{{ t('not_exist') }} (test)</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="flex flex-row">
+        @if (isHandset$ | async) {
+        <button
+          type="button"
+          class="grow-0"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        }
+        <span id="app-title" class="grow">YourRents</span>
+        <app-authentication class="grow-0"></app-authentication>
+        <app-language-switcher class="grow-0"></app-language-switcher>
+      </mat-toolbar>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

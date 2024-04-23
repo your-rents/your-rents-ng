@@ -2,13 +2,14 @@ import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, Signal, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
   selector: 'app-authentication',
   standalone: true,
-  imports: [RouterModule, MatButtonModule],
+  imports: [RouterModule, MatButtonModule, TranslocoDirective],
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.css',
 })

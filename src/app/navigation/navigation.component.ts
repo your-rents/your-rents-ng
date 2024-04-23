@@ -12,6 +12,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthenticationComponent } from '../authentication/authentication.component';
 import { KeycloakService } from 'keycloak-angular';
+import { TranslocoDirective, TranslocoModule } from '@jsverse/transloco';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-navigation',
@@ -27,7 +29,9 @@ import { KeycloakService } from 'keycloak-angular';
     MatIconModule,
     MatDividerModule,
     AsyncPipe,
+    LanguageSwitcherComponent,
     AuthenticationComponent,
+    TranslocoDirective,
   ],
 })
 export class NavigationComponent {

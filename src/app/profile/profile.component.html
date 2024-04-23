@@ -29,3 +29,16 @@
     }
   </mat-card-content>
 </mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User Preferences</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>lastLanguage</span>
+        <span matListItemLine>{{ userService.preferences.lastLanguage }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

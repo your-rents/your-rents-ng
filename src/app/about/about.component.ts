@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-about',
@@ -10,4 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class AboutComponent {
 
+  constructor(public translocoService: TranslocoService) {
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "about": "About",
+  "administration": "Administration",
+  "back": "Back",
+  "forbidden": "Forbidden",
+  "home": "Home",
+  "it_istat_code": "Istat Code (IT)",
+  "it_tax_office_code": "Tax Office Code (IT)",
+  "name": "Name",
+  "not_exist": "Not exist",
+  "page_not_found": "Page not found",
+  "paginator": {
+    "first_page": "First page",
+    "items_per_page": "Items per page:",
+    "last_page": "Last page",
+    "next_page": "Next page",
+    "page": "Page {{page}} of {{amountPages}}",
+    "previous_page": "Previous page"
+  },
+  "province": "Province",
+  "sign-in": "Sign In",
+  "sign-out": "Sign Out"
+}
