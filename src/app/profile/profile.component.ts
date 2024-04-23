@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
+import { UserService } from '../shared/service/common/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ import { KeycloakProfile } from 'keycloak-js';
 })
 export default class ProfileComponent implements OnInit {
   keycloakService: KeycloakService = inject(KeycloakService);
+  userService: UserService = inject(UserService);
   user: KeycloakProfile | null = null;
 
   async ngOnInit() {

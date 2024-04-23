@@ -1,16 +1,19 @@
 import { AfterViewInit, Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CityService } from '../../../../shared/service/geodata/city.service';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { City } from '../../../../shared/model/geodata/city';
 import { catchError, map, merge, of, startWith, switchMap } from 'rxjs';
+import { TranslocoDirective } from '@jsverse/transloco';
+import { TranslocoPaginatorIntl } from '../../../../shared/service/common/transloco-paginator-intl';
 
 @Component({
   selector: 'app-city-list',
   standalone: true,
-  imports: [MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule],
+  imports: [MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule, TranslocoDirective],
+  providers: [{ provide: MatPaginatorIntl, useClass: TranslocoPaginatorIntl }],
   templateUrl: './city-list.component.html',
   styleUrl: './city-list.component.css',
 })

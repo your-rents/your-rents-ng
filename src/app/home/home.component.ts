@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +11,6 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class HomeComponent {
 
+  constructor(public translocoService: TranslocoService) {
+  }
 }

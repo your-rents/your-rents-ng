@@ -1,19 +1,21 @@
-<mat-card>
+<mat-card *transloco="let t">
   <mat-card-header>
-    <mat-card-title>Page not found :-(</mat-card-title>
+    <mat-card-title>{{ t("page_not_found") }} :-(</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>
-      Maybe the page you are looking for has been removed, or you typed in the
-      wrong URL.
+      @switch (translocoService.getActiveLang()) { @case('it') { Forse la pagina
+      che stai cercando è stata rimossa o hai digitato l'URL sbagliato. }
+      @default { Maybe the page you are looking for has been removed, or you
+      typed in the wrong URL. } }
     </p>
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="goBack()">BACK</button>
-    <a mat-button routerLink="/">HOME</a>
+    <button mat-button (click)="goBack()">{{ t("back") | uppercase }}</button>
+    <a mat-button routerLink="/">{{ t("home") | uppercase }}</a>
   </mat-card-actions>
   <mat-card-footer>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </mat-card-footer>  
+  </mat-card-footer>
 </mat-card>

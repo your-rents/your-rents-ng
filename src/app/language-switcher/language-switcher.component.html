@@ -1,0 +1,15 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="languages"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon svgIcon="{{ activeLang }}"></mat-icon>
+</button>
+<mat-menu #languages="matMenu">
+  @for (language of availableLangs; track language.id) {
+  <button mat-menu-item (click)="changeLang(language.id)">
+    <mat-icon svgIcon="{{ language.id }}"></mat-icon>
+    <span>{{ language.label }}</span>
+  </button>
+  }
+</mat-menu>
