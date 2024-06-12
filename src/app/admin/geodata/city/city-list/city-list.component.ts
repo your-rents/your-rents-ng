@@ -58,7 +58,7 @@ export default class CityListComponent implements AfterViewInit {
             return [];
           }
 
-          this.resultsLength = data.totalElements;
+          this.resultsLength = data.page.totalElements;
           return data.content;
         }),
       )
