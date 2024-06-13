@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import CityListComponent from './city-list.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { AppTestingModule } from '../../../../shared/testing/app-testing.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('CityListComponent', () => {
   let component: CityListComponent;
@@ -10,8 +11,9 @@ describe('CityListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CityListComponent, AppTestingModule, HttpClientTestingModule]
-    })
+    imports: [CityListComponent, AppTestingModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(CityListComponent);
