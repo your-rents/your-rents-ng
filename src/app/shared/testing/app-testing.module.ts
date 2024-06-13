@@ -12,7 +12,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
         TranslocoTestingModule.forRoot({
             langs: { en, it },
             translocoConfig: {
-                availableLangs: ['en', 'it'],
+                availableLangs: [{id: 'en', label: 'English'}, {id: 'it', label: 'Italiano'}],
                 defaultLang: 'en',
             },
             preloadLangs: true,
