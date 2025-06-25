@@ -1,4 +1,4 @@
-import { Location, UpperCasePipe } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -10,14 +10,13 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 @Component({
     selector: 'app-page403',
     imports: [
-        RouterLink,
-        MatCardModule,
-        MatDividerModule,
-        MatProgressBarModule,
-        MatButtonModule,
-        TranslocoDirective,
-        UpperCasePipe
-    ],
+    RouterLink,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatButtonModule,
+    TranslocoDirective
+],
     templateUrl: './page403.component.html',
     styleUrl: './page403.component.css'
 })

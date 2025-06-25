@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -8,7 +7,7 @@ import { UserService } from '../shared/service/common/user.service';
 
 @Component({
     selector: 'app-profile',
-    imports: [MatCardModule, MatListModule, AsyncPipe],
+    imports: [MatCardModule, MatListModule],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.css'
 })
