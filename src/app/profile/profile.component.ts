@@ -7,11 +7,10 @@ import { KeycloakProfile } from 'keycloak-js';
 import { UserService } from '../shared/service/common/user.service';
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [MatCardModule, MatListModule, AsyncPipe],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+    selector: 'app-profile',
+    imports: [MatCardModule, MatListModule, AsyncPipe],
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.css'
 })
 export default class ProfileComponent implements OnInit {
   keycloakService: KeycloakService = inject(KeycloakService);

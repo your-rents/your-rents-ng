@@ -7,11 +7,10 @@ import { LangDefinition, TranslocoService } from '@jsverse/transloco';
 import { UserService } from '../shared/service/common/user.service';
 
 @Component({
-  selector: 'app-language-switcher',
-  standalone: true,
-  imports: [MatMenuModule, MatButtonModule, MatIconModule],
-  templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.css',
+    selector: 'app-language-switcher',
+    imports: [MatMenuModule, MatButtonModule, MatIconModule],
+    templateUrl: './language-switcher.component.html',
+    styleUrl: './language-switcher.component.css'
 })
 export class LanguageSwitcherComponent {
   constructor(

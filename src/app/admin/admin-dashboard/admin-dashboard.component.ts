@@ -3,11 +3,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  standalone: true,
-  imports: [MatTabsModule, RouterModule],
-  templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css',
+    selector: 'app-admin-dashboard',
+    imports: [MatTabsModule, RouterModule],
+    templateUrl: './admin-dashboard.component.html',
+    styleUrl: './admin-dashboard.component.css'
 })
 export class AdminDashboardComponent {
 

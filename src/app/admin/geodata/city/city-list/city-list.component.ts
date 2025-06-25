@@ -10,12 +10,11 @@ import { TranslocoDirective } from '@jsverse/transloco';
 import { TranslocoPaginatorIntl } from '../../../../shared/service/common/transloco-paginator-intl';
 
 @Component({
-  selector: 'app-city-list',
-  standalone: true,
-  imports: [MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule, TranslocoDirective],
-  providers: [{ provide: MatPaginatorIntl, useClass: TranslocoPaginatorIntl }],
-  templateUrl: './city-list.component.html',
-  styleUrl: './city-list.component.css',
+    selector: 'app-city-list',
+    imports: [MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule, TranslocoDirective],
+    providers: [{ provide: MatPaginatorIntl, useClass: TranslocoPaginatorIntl }],
+    templateUrl: './city-list.component.html',
+    styleUrl: './city-list.component.css'
 })
 export default class CityListComponent implements AfterViewInit {
   displayedColumns: string[] = ['uuid', 'name', 'localData.itCodiceIstat', 'localData.itCodiceErariale', 'province.name'];

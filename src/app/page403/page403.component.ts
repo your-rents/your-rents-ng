@@ -8,19 +8,18 @@ import { RouterLink } from '@angular/router';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
-  selector: 'app-page403',
-  standalone: true,
-  imports: [
-    RouterLink,
-    MatCardModule,
-    MatDividerModule,
-    MatProgressBarModule,
-    MatButtonModule,
-    TranslocoDirective,
-    UpperCasePipe
-  ],
-  templateUrl: './page403.component.html',
-  styleUrl: './page403.component.css',
+    selector: 'app-page403',
+    imports: [
+        RouterLink,
+        MatCardModule,
+        MatDividerModule,
+        MatProgressBarModule,
+        MatButtonModule,
+        TranslocoDirective,
+        UpperCasePipe
+    ],
+    templateUrl: './page403.component.html',
+    styleUrl: './page403.component.css'
 })
 export class Page403Component {
   constructor(private location: Location, public translocoService: TranslocoService) {}

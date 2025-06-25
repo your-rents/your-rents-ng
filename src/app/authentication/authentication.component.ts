@@ -7,11 +7,10 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
-  selector: 'app-authentication',
-  standalone: true,
-  imports: [RouterModule, MatButtonModule, TranslocoDirective],
-  templateUrl: './authentication.component.html',
-  styleUrl: './authentication.component.css',
+    selector: 'app-authentication',
+    imports: [RouterModule, MatButtonModule, TranslocoDirective],
+    templateUrl: './authentication.component.html',
+    styleUrl: './authentication.component.css'
 })
 export class AuthenticationComponent implements OnInit {
   isLoggedIn = false;

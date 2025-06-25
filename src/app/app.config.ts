@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ApplicationConfig, isDevMode } from '@angular/core';
+import { ApplicationConfig, isDevMode, inject, provideAppInitializer } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -16,12 +16,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),
     KeycloakService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
+    provideAppInitializer(() => {
+        const initializerFn = (initKeycloak)(inject(KeycloakService));
+        return initializerFn();
+      }),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: KeycloakBearerInterceptor,

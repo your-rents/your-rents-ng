@@ -16,23 +16,22 @@ import { TranslocoDirective, TranslocoModule } from '@jsverse/transloco';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.css',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatDividerModule,
-    AsyncPipe,
-    LanguageSwitcherComponent,
-    AuthenticationComponent,
-    TranslocoDirective,
-  ],
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.css',
+    imports: [
+        RouterModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatDividerModule,
+        AsyncPipe,
+        LanguageSwitcherComponent,
+        AuthenticationComponent,
+        TranslocoDirective,
+    ]
 })
 export class NavigationComponent {
   title = 'YourRents';
