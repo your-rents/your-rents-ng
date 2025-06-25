@@ -23,8 +23,8 @@
     "@angular/platform-browser-dynamic": "^19.2.14",
     "@angular/router": "^19.2.14",
     "@jsverse/transloco": "^7.2.1",
-    "keycloak-angular": "^16.0.1",
-    "keycloak-js": "^25.0.0",
+    "keycloak-angular": "^20.0.0",
+    "keycloak-js": "^26.2.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.15.1"
