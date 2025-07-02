@@ -37,6 +37,7 @@ export class NavigationComponent {
   title = 'YourRents';
   isLoggedIn = false;
   isAdmin = false;
+  isUser = false;
 
   private readonly keycloakService: KeycloakService = inject(KeycloakService);
 
@@ -54,6 +55,7 @@ export class NavigationComponent {
 
     if (this.isLoggedIn) {
       this.isAdmin = this.keycloakService.isUserInRole('ADMIN');
+      this.isUser  = this.keycloakService.isUserInRole('USER');
     }
 
   }

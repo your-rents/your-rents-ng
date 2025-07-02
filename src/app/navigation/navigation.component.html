@@ -27,6 +27,15 @@
           ><span>{{ t('administration' )}}</span></a
         >
         }
+       @if (isUser) {
+        <a
+          mat-list-item
+          routerLink="/properties"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          ><span>{{ t('properties' )}}</span></a
+        >
+        }
         <a
           mat-list-item
           routerLink="/about"
