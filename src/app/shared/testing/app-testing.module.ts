@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 import { TranslocoTestingModule } from '@jsverse/transloco';
 import en from '../../../assets/i18n/en.json';
 import it from '../../../assets/i18n/it.json';
@@ -18,7 +18,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
             preloadLangs: true,
         })], providers: [
         provideRouter([]),
-        { provide: KeycloakService, useValue: jasmine.createSpyObj('KeycloakService', ['init', 'login', 'logout', 'isLoggedIn', 'loadUserProfile']) },
+        { provide: Keycloak, useValue: jasmine.createSpyObj('Keycloak', ['init', 'login', 'logout', 'loadUserProfile', 'resourceAccess']) },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting()
     ] })
