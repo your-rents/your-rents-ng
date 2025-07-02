@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
+import Keycloak from 'keycloak-js';
 import { UserService } from '../shared/service/common/user.service';
 
 @Component({
@@ -12,12 +12,14 @@ import { UserService } from '../shared/service/common/user.service';
     styleUrl: './profile.component.css'
 })
 export default class ProfileComponent implements OnInit {
-  keycloakService: KeycloakService = inject(KeycloakService);
+  keycloak: Keycloak = inject(Keycloak);
   userService: UserService = inject(UserService);
   user: KeycloakProfile | null = null;
+  roles: string[] = [];
 
   async ngOnInit() {
-    this.user = await this.keycloakService.loadUserProfile();
+    this.user = await this.keycloak.loadUserProfile();
+    this.roles = this.keycloak.resourceAccess![this.keycloak.clientId!]?.roles || [];
   }
 
 }
