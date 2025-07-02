@@ -18,7 +18,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
             preloadLangs: true,
         })], providers: [
         provideRouter([]),
-        { provide: Keycloak, useValue: jasmine.createSpyObj('Keycloak', ['init', 'login', 'logout', 'isLoggedIn', 'loadUserProfile']) },
+        { provide: Keycloak, useValue: jasmine.createSpyObj('Keycloak', ['init', 'login', 'logout', 'loadUserProfile', 'resourceAccess']) },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting()
     ] })
