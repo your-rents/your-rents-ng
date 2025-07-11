@@ -1,0 +1,9 @@
+<p>property-detail works!</p>
+
+@if (myProperty$ | async; as data) {
+
+
+<p>UUID: {{ data.uuid }}</p>
+<p>Nome: {{data.name}}</p>
+<p>Descrizione: {{ data.description }}</p>
+}
