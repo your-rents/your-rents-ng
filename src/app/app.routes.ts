@@ -16,14 +16,6 @@ export const routes: Routes = [
     data: { roles: ['USER'] },
   },
   {
-    path: 'pro',
-    title: 'YourRents - User Profile',
-    loadComponent: () => import('./profile/profile.component'),
-    canActivate: [AuthGuard],
-    data: { roles: ['USER'] },
-  },
-
-  {
     path: 'admin',
     title: 'YourRents - Admin',
     loadChildren: () => import('./admin/admin.routes').then((m) => m.routes),
@@ -35,10 +27,9 @@ export const routes: Routes = [
     path:"properties",
     title: 'YourRents - Properties',
     loadChildren: () => import('./properties/properties.routes').then((m) => m.routes),
-    canActivate: [AuthGuard],
+    canActivate: [canActivateAuthRole],
     data: { roles: ['USER'] },
   },
-
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '403',
