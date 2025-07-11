@@ -11,7 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthenticationComponent } from '../authentication/authentication.component';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 import { TranslocoDirective, TranslocoModule } from '@jsverse/transloco';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
@@ -35,11 +35,11 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 })
 export class NavigationComponent {
   title = 'YourRents';
-  isLoggedIn = false;
+  isLoggedIn? = false;
   isAdmin = false;
   isUser = false;
 
-  private readonly keycloakService: KeycloakService = inject(KeycloakService);
+  private readonly keycloak: Keycloak = inject(Keycloak);
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -51,11 +51,11 @@ export class NavigationComponent {
     );
 
   async ngOnInit() {
-    this.isLoggedIn = await this.keycloakService.isLoggedIn();
+    this.isLoggedIn = this.keycloak.authenticated;
 
     if (this.isLoggedIn) {
-      this.isAdmin = this.keycloakService.isUserInRole('ADMIN');
-      this.isUser  = this.keycloakService.isUserInRole('USER');
+      this.isAdmin = this.keycloak.hasResourceRole('ADMIN');
+      this.isUser  = this.keycloak.hasResourceRole('USER');
     }
 
   }

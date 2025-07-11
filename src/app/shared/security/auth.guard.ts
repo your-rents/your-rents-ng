@@ -1,46 +1,49 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
+  CanActivateFn,
   Router,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
-import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import { AuthGuardData, createAuthGuard } from 'keycloak-angular';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard extends KeycloakAuthGuard {
-  constructor(
-    protected readonly myrouter: Router,
-    protected readonly keycloak: KeycloakService
-  ) {
-    super(myrouter, keycloak);
+const isAccessAllowed = async (
+  route: ActivatedRouteSnapshot,
+  _: RouterStateSnapshot,
+  authData: AuthGuardData
+): Promise<boolean | UrlTree> => {
+  const { authenticated, grantedRoles, keycloak } = authData;
+
+  // Force the user to log in if currently unauthenticated.
+  if (!authenticated) {
+    await keycloak.login({
+      redirectUri: window.location.origin + _.url,
+    });
   }
 
-  public async isAccessAllowed(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ) {
-    // Force the user to log in if currently unauthenticated.
-    if (!this.authenticated) {
-      await this.keycloak.login({
-        redirectUri: window.location.origin + state.url
-      });
-    }
+  // Get the roles required from the route.
+  const requiredRoles = route.data['roles'];
 
-    // Get the roles required from the route.
-    const requiredRoles = route.data['roles'];
-
-    // Allow the user to proceed if no additional roles are required to access the route.
-    if (!Array.isArray(requiredRoles) || requiredRoles.length === 0) {
-      return true;
-    }
-
-    // Allow the user to proceed if all the required roles are present.
-    if(requiredRoles.every((role) => this.roles.includes(role))) {
-      return true;
-    } else {
-      return this.router.createUrlTree(['/403']);
-    }
+  // Allow the user to proceed if no additional roles are required to access the route.
+  if (!Array.isArray(requiredRoles) || requiredRoles.length === 0) {
+    return true;
   }
-}
+
+  // Allow the user to proceed if all the required roles are present.
+  if (
+    requiredRoles.every((role) =>
+      Object.values(grantedRoles.resourceRoles).some((roles) =>
+        roles.includes(role)
+      )
+    )
+  ) {
+    return true;
+  }
+
+  const router = inject(Router);
+  return router.createUrlTree(['/403']);
+};
+
+export const canActivateAuthRole =
+  createAuthGuard<CanActivateFn>(isAccessAllowed);

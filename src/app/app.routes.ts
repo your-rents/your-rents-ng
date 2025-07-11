@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { Page404Component } from './page404/page404.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { AuthGuard } from './shared/security';
 import { Page403Component } from './page403/page403.component';
+import { canActivateAuthRole } from './shared/security/auth.guard';
 
 export const routes: Routes = [
   { path: 'home', title: 'YourRents - Home', component: HomeComponent },
@@ -12,7 +12,7 @@ export const routes: Routes = [
     path: 'profile',
     title: 'YourRents - User Profile',
     loadComponent: () => import('./profile/profile.component'),
-    canActivate: [AuthGuard],
+    canActivate: [canActivateAuthRole],
     data: { roles: ['USER'] },
   },
   {
@@ -27,7 +27,7 @@ export const routes: Routes = [
     path: 'admin',
     title: 'YourRents - Admin',
     loadChildren: () => import('./admin/admin.routes').then((m) => m.routes),
-    canActivate: [AuthGuard],
+    canActivate: [canActivateAuthRole],
     data: { roles: ['ADMIN'] },
   },
 
