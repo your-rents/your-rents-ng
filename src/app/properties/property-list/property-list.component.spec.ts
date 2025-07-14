@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PropertyListComponent } from './property-list.component';
+import { AppTestingModule } from '../../shared/testing/app-testing.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('PropertyListComponent', () => {
   let component: PropertyListComponent;
@@ -8,7 +11,8 @@ describe('PropertyListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PropertyListComponent]
+      imports: [PropertyListComponent, AppTestingModule],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     })
     .compileComponents();
 
